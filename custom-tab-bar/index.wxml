@@ -1,0 +1,6 @@
+<!--custom-tab-bar/index.wxml-->
+<cover-view>
+    <cover-view wx:for="{{tabList}}" wx:key="index" data-now-path="{{item.clickPagePath}}" bindtap="clickTab">
+        <cover-view style="color: {{nowIndex == index ? 'blue' : 'lightgrey' }}">{{item.tabText}}</cover-view>
+    </cover-view>
+</cover-view>

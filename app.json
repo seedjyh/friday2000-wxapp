@@ -1,0 +1,26 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/index/mine"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ff0",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "custom": true,
+        "list": [
+            {
+                "pagePath": "pages/index/index"
+            },
+            {
+                "pagePath": "pages/index/mine"
+            }
+        ]
+    },
+    "usingComponents": {}
+}
