@@ -1,7 +1,9 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/index/mine"
+        "pages/index/mine",
+        "pages/leagues/index",
+        "pages/events/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

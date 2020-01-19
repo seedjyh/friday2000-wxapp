@@ -1,2 +1,4 @@
 <!--index.wxml-->
 <text>首页</text>
+<button bindtap="goToRecentEvents">近期事件</button>
+<button bindtap="goToMyLeagues">我的联赛</button>
