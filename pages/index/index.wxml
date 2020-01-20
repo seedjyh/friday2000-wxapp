@@ -1,4 +1,9 @@
-<!--index.wxml-->
-<text>首页</text>
-<view bindtap="goToMyActivities">近期活动</view>
-<view bindtap="goToMyLeagues">我的联赛</view>
+<text>首页5</text>
+<view class="content">
+    <view class="bar">
+        <text>近期活动</text>
+    </view>
+    <view class="bar">
+        <text>我的联赛</text>
+    </view>
+</view>

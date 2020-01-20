@@ -1,1 +1,14 @@
-/**index.wxss**/
+.content {
+    background: grey;
+}
+
+.bar {
+    display: flex;
+    background: lightgreen;
+    height: 80px;
+}
+
+.bar text {
+    display: flex;
+    margin: auto;
+}
