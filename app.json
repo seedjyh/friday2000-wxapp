@@ -3,12 +3,12 @@
         "pages/index/index",
         "pages/index/mine",
         "pages/leagues/index",
-        "pages/events/index"
+        "pages/activities/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#ff0",
-        "navigationBarTitleText": "WeChat",
+        "navigationBarTitleText": "周五晚八点",
         "navigationBarTextStyle": "black"
     },
     "style": "v2",
