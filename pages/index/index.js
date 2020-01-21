@@ -65,7 +65,7 @@ Page({
 
     goToMyActivities: function() {
         wx.navigateTo({
-            url: '/pages/activities/index',
+            url: '/pages/activities/index?state=coming',
         })
     },
     goToMyLeagues: function() {

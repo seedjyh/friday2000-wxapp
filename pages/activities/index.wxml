@@ -1,4 +1,11 @@
-<!--pages/activities/index.wxml-->
+<!--pages/activities/index.wxml>
 <view>两种可能</view>
 <view>单个联赛内的活动列表，或者</view>
-<view>当前用户可参加或可报名的活动，包括即将开始的、进行中的和已结束的</view>
+<view>当前用户可参加或可报名的活动，包括即将开始的、进行中的和已结束的</view-->
+<view wx:for="{{activityList}}" wx:key="{{index}}" class="activity">
+    <view class="description">
+        <view class="league-name">{{item.leagueName}}</view>
+        <view class="start-time">{{item.startTime}}</view>
+    </view>
+    <view class="enroll-state"><text>{{item.enrollState}}</text></view>
+</view>

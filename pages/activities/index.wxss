@@ -1,1 +1,33 @@
-/* pages/activities/index.wxss */
+.activity {
+    display: flex;
+    height: 80px;
+    background-color: green;
+    width: 100%;
+    margin: 10px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 10px;
+}
+
+.league-name {
+    font-size: 30px;
+    color: white;
+}
+
+.start-time {
+    font-size: 15px;
+    color: lightgrey;
+}
+
+.enroll-state {
+    display: flex;
+    align-items: center;
+    flex: none;
+    width: 40px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
