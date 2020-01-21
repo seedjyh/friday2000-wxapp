@@ -1,6 +1,7 @@
-<!--custom-tab-bar/index.wxml-->
-<cover-view>
-    <cover-view wx:for="{{tabList}}" wx:key="index" data-now-path="{{item.clickPagePath}}" bindtap="clickTab">
-        <cover-view style="color: {{nowIndex == index ? 'blue' : 'lightgrey' }}">{{item.tabText}}</cover-view>
+<cover-view class="tabbar">
+    <cover-view class="border"></cover-view>
+    <cover-view class="tab-item" wx:for="{{tabList}}" wx:key="index" data-now-path="{{item.clickPagePath}}" bindtap="clickTab" style="transform: scale({{nowIndex == index ? 1 : 0.5}})">
+        <cover-view style="color: {{nowIndex == index ? 'red' : 'grey'}}">{{item.tabText}}图标</cover-view>
+        <cover-view style="color: {{nowIndex == index ? 'green' : 'grey'}}">{{item.tabText}}文字</cover-view>
     </cover-view>
 </cover-view>
