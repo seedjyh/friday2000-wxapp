@@ -9,6 +9,5 @@
 }
 
 .bar text {
-    display: flex;
     margin: auto;
 }
