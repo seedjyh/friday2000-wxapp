@@ -15,6 +15,16 @@ Page({
       url: '../logs/logs'
     })
   },
+  clickFoo() {
+    var that = this
+    console.log("enter clickFoo!")
+    wx.request({
+      url: "https://api.seedjyh.com/friday2000",
+      success(res) {
+        that.setData({motto: res.data})
+      }
+    })
+  },
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({
