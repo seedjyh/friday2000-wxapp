@@ -5,52 +5,80 @@ App({
     const logs = wx.getStorageSync('logs') || []
     logs.push(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
-    wx.login({
-      success: res => {
-        console.log("wx.login.success.res", res)
+    allLogin(this);
+    async function allLogin(app) {
+      var wxCode = await wxLogin()
+      var userID = await codeLogin(wxCode)
+      app.globalData.userID = userID
+      console.log("allLogin.userID", userID)
+      var wxSetting = await wxGetSetting()
+      if (wxSetting.authSetting['scope.userInfo']) {
+        var wxUserInfoRes = await wxGetUserInfoRes()
+        console.log("allLogin.userInfo", wxUserInfoRes.userInfo)
+        app.globalData.userInfo = wxUserInfoRes.userInfo;
+        if (app.userInfoReadyCallback) {
+          app.userInfoReadyCallback(wxUserInfoRes)
+        }
+        await uploadUserInfo(userID, wxUserInfoRes.userInfo);
+      }
+    }
+    function wxLogin() {
+      // 执行微信登录，返回一个微信code
+      return new Promise((resolve, reject) => {
+        wx.login({
+          success: res => resolve(res.code),
+          fail: res => reject(res)
+        })
+      });
+    };
+    var wxGetSetting = function() {
+      return new Promise((resolve) => {
+        wx.getSetting({
+          success: res => resolve(res)
+        });
+      });
+    }
+    function wxGetUserInfoRes() {
+      return new Promise((resolve) => {
+        wx.getUserInfo({
+          success: res => resolve(res)
+        });
+      });
+    }
+    // codeLogin 将微信code上传到后台服务器，从而获得后台userID。
+    function codeLogin(code) {
+      return new Promise((resolve, reject) => {
         wx.request({
           url: "https://api.seedjyh.com/friday2000/login",
           method: "POST",
           dataType: "json",
           data: {
-            "code": res.code
+            "code": code
           },
-          success: res => {
-            console.log("wx.request.friday2000-login.success.res", res)
-          },
-          fail: res => {
-            console.log("wx.request.friday2000-login.fail.res", res)
-          }
+          success: res => resolve(res.data.userID),
+          fail: res => reject(res)
         })
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        console.log("wx.getSetting.success.res", res)
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              console.log("wx.getUserInfo.success.res", res)
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
-    })
+      });
+    }
+    // uploadUserInfo 将微信用户信息上传到后台服务器
+    function uploadUserInfo(userID, userInfo) {
+      return new Promise((resolve, reject) => {
+        wx.request({
+          url: "https://api.seedjyh.com/friday2000/users/" + userID.toString() + "/userinfo",
+          method: "PUT",
+          dataType: "json",
+          data: {
+            "userInfo": userInfo
+          },
+          success: res => resolve(res),
+          fail: res => reject(res)
+        })
+      })
+    };
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userID: -1
   }
 })
