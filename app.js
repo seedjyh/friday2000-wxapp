@@ -10,6 +10,20 @@ App({
     wx.login({
       success: res => {
         console.log("wx.login.success.res", res)
+        wx.request({
+          url: "https://api.seedjyh.com/friday2000/login",
+          method: "POST",
+          dataType: "json",
+          data: {
+            "code": res.code
+          },
+          success: res => {
+            console.log("wx.request.friday2000-login.success.res", res)
+          },
+          fail: res => {
+            console.log("wx.request.friday2000-login.fail.res", res)
+          }
+        })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
