@@ -32,7 +32,7 @@ App({
         })
       });
     };
-    var wxGetSetting = function() {
+    function wxGetSetting() {
       return new Promise((resolve) => {
         wx.getSetting({
           success: res => resolve(res)
