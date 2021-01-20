@@ -7,10 +7,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="foobutton">
-    <button type="primary" bindtap="clickFoo">Click IT!</button>
+  <view class="createActivity">
+    <button type="primary" bindtap="clickCreateActivity">创建活动</button>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="myActivities">
+    <button type="primary" bindtap="clickMyActivities">我的活动</button>
   </view>
 </view>

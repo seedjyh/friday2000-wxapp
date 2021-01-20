@@ -1,0 +1,14 @@
+<!--pages/activity/createActivity.wxml-->
+<view class="section">
+  <picker mode="date" bindchange="bindDateChange">
+    <view class="picker">
+        开始时间: {{startTime}}
+    </view>
+  </picker>
+  <view class="editComment">
+        备注：<input maxlength="20" bindinput="bindCommentInput" placeholder="给活动起个名字吧"/>
+  </view>
+  <view class="createActivity">
+    <button type="primary" bindtap="clickCreateActivity">创建</button>
+  </view>
+</view>

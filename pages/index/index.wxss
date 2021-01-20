@@ -16,8 +16,12 @@
   color: #aaa;
 }
 
-.foobutton {
-  margin-top: 100px;
+.createActivity {
+  margin-top: 50px;
+}
+
+.myActivities {
+  margin-top: 20px;
 }
 
 .usermotto {

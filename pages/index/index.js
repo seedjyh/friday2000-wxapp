@@ -60,5 +60,10 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  clickCreateActivity() {
+    wx.navigateTo({
+      url: '../createActivity/createActivity'
+    })
   }
 })
